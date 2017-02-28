@@ -1,3 +1,19 @@
+### For Development
+
+```shell
+# run locally
+bundle install
+bundle exec middleman server
+
+# then to deploy to github pages
+./deploy.sh
+```
+
+
+
+
+--------------
+
 <p align="center">
   <img src="https://raw.githubusercontent.com/lord/img/master/logo-slate.png" alt="Slate: API Documentation Generator" width="226">
   <br>
