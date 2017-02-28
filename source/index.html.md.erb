@@ -1,0 +1,195 @@
+---
+title: SalesDirector.ai API Documentation
+
+language_tabs:
+  - shell
+ 
+includes:
+  - errors
+
+search: true
+---
+
+<%
+#declare global vars here
+product_name = 'SalesDirector.ai'
+domain = 'salesdirector.ai'
+
+%>
+
+# Overview
+
+<h3>Welcome to the <%= product_name %> API</h3> 
+
+This API speaks JSON.   The API uses <a href="https://labs.omniti.com/labs/jsend" target="_blank">JSend</a> type JSON responses to provide a consistent response format.
+
+This API is stable, we will be actively adding more methods to this API regularly.
+
+# Authentication
+
+> To authorize, use this code:
+
+```shell
+# With shell, you can just pass the correct header with each request
+curl "api_endpoint_here"
+  -H "Authorization: xxxxxxxxxxx"
+```
+
+> Make sure to replace `xxxxxxxxxxx` with your API key.
+
+<%= product_name %> uses API keys to allow access to the API. To get an API key login into <%= product_name %> and go to Setup -> API Keys -> and create a New API Key.
+
+<%= product_name %> expects for the API key to be included in all API requests to the server in a header that looks like the following:
+
+`Authorization: xxxxxxxxxxx`
+
+<aside class="notice">
+You must replace <code>xxxxxxxxxxx</code> with your personal API key.
+</aside>
+
+Also Note you should access your API via your subdomain.  
+
+`https://yyyyyyy.<%= domain %>/api/something`
+
+<aside class="notice">
+You must replace <code>yyyyyyy</code> with your subdomain.
+</aside>
+
+
+# Opportunities 
+
+
+## Get My Opportunities
+
+```shell
+curl "https://yyyyyyy.<%= domain %>/api/opportunities/my"
+  -H "Authorization: xxxxxxxxxxx"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+"status": "success",
+"data": [
+    {
+      "id": "a9799007-8ed2-4261-b5a8-1efbdc8bbc2b",
+      "active": "1",
+      "external_opp_id": "334j0HHBF",
+      "name": "Phone Install for Southern Railway",
+      "external_account_id": "333j055555",
+      "account": "Southern Railway",
+      "amount": 80000,
+      "close_date": {
+        "date": "2017-02-15 00:00:00.000000",
+        "timezone_type": 2,
+        "timezone": "PST"
+      },
+      "stage": "Develop",
+      "forecast": "upside",
+      "stage_system": "Develop",
+      "forecast_system": "upside",
+      "activity_index": 33,
+      "relationship_index": 50
+    }
+  ]
+}
+```
+
+### HTTP Request
+
+`GET https://yyyyyyy.<%= domain %>/api/opportunities/my`
+
+
+
+
+
+## Upload/Update Opportunities
+
+```shell
+curl "https://yyyyyyy.<%= domain %>/api/admin/opportunities/upload" -F "file=@myfile.csv" -H "Authorization: xxxxxxxxxxx"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "status":"success",
+  "data":{
+    "total_imported_rows": 12,
+    "total_error_rows": 2,
+    "error_file": "https://app.<%= domain %>/somebucket/mycompany-csv-opps-error-2017-02-28-13-42-36-84q1jp3u.csv",
+    "total_original_rows": 12
+  }
+}
+```
+
+Upload / Update Opportunities via CSV file (batch process).   Note: you must have Administrative permissions to perform this action.
+
+Note: The <u>unique key is the Opportunity ID</u>.   If we detect a new Opportunity ID in your CSV we will create a new opportunity, existing Opportunities will be Updated.  
+Additionally it is important to get the URL/Website field right.  We use this to match outgoing/inbound emails to the Opportunity.
+
+Fields we need are: 
+Opportunity ID*, Opportunity Name*, Amount, Close Date, Stage, Opportunity Owner, Opportunity Owner Email, Account ID, Account Name, Account URL/Website
+
+The CSV file needs the first line to be a header line.  Only 2 fields marked with a * are required, but we recommend as many as possible.  
+ 
+<a href="https://app.<%= domain %>/static/build/sd_sample_opportunities.csv">Sample CSV File</a>
+
+### HTTP Request
+
+`GET https://yyyyyyy.<%= domain %>/api/admin/opportunities/upload`
+
+### Query Parameters
+
+Parameter | Default | Description
+--------- | ------- | -----------
+send_error_email | false | If set to true, any errors will be emailed to the user
+
+
+
+
+
+# Sales Targets 
+
+
+## Upload/Update Sales Targets
+
+```shell
+curl "https://yyyyyyy.<%= domain %>/api/admin/salestargets/upload" -F "file=@myfile.csv" -H "Authorization: xxxxxxxxxxx"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "status":"success",
+  "data":{
+    "total_imported_rows": 12,
+    "total_error_rows": 2,
+    "error_file": "https://app.<%= domain %>/somebucket/mycompany-csv-opps-error-2017-02-28-13-42-36-84q1jp3u.csv",
+    "total_original_rows": 12
+  }
+}
+```
+
+Upload / Update Sales Targets (Sales Quotas) via CSV file (batch process).   Note: you must have Administrative permissions to perform this action.
+
+Fields we need are: 
+Email Address of Salesrep, Month (date), Amount
+
+The CSV file needs the first line to be a header line.  All fields are required.  
+ 
+<a href="https://app.<%= domain %>/static/build/sd_sample_salestargets.csv">Sample CSV File</a>
+
+### HTTP Request
+
+`GET https://yyyyyyy.<%= domain %>/api/admin/salestargets/upload`
+
+### Query Parameters
+
+Parameter | Default | Description
+--------- | ------- | -----------
+send_error_email | false | If set to true, any errors will be emailed to the user
+
+
