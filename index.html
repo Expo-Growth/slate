@@ -228,9 +228,11 @@
 
 <h3>Welcome to the SalesDirector.ai API Documentation</h3> 
 
-<p>This API speaks JSON.   The API uses <a href="https://labs.omniti.com/labs/jsend" target="_blank">JSend</a> type JSON responses to provide a consistent response format.</p>
+<p>This RESTful API speaks JSON.   The API uses <a href="https://labs.omniti.com/labs/jsend" target="_blank">JSend</a> type JSON responses to provide a consistent response format.</p>
 
 <p>This API is stable, we will be actively adding more methods to this API regularly.</p>
+
+<p>Any breaking changes made to the API will result in a new version of the API.   Currently we are on version 1.   You change the version in the URI such as /api/v1 or /api/v2, etc&hellip;</p>
 
 <h1 id="authentication">Authentication</h1>
 
@@ -257,7 +259,7 @@ You must replace <code>xxxxxxxxxxx</code> with your personal API key.
 
 <p>Also Note you should access your API via your subdomain.  </p>
 
-<p><code class="prettyprint">https://yyyyyyy.salesdirector.ai/api/something</code></p>
+<p><code class="prettyprint">https://yyyyyyy.salesdirector.ai/api/v1/something</code></p>
 
 <aside class="notice">
 You must replace <code>yyyyyyy</code> with your subdomain.
@@ -266,7 +268,7 @@ You must replace <code>yyyyyyy</code> with your subdomain.
 <h1 id="opportunities">Opportunities</h1>
 
 <h2 id="get-my-opportunities">Get My Opportunities</h2>
-<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://yyyyyyy.salesdirector.ai/api/opportunities/my"</span>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://yyyyyyy.salesdirector.ai/api/v1/opportunities/my"</span>
   -H <span class="s2">"Authorization: xxxxxxxxxxx"</span>
 </code></pre>
 <blockquote>
@@ -300,10 +302,10 @@ You must replace <code>yyyyyyy</code> with your subdomain.
 </span></code></pre>
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">GET https://yyyyyyy.salesdirector.ai/api/opportunities/my</code></p>
+<p><code class="prettyprint">GET https://yyyyyyy.salesdirector.ai/api/v1/opportunities/my</code></p>
 
 <h2 id="upload-update-opportunities">Upload/Update Opportunities</h2>
-<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://yyyyyyy.salesdirector.ai/api/admin/opportunities/upload"</span> -F <span class="s2">"file=@myfile.csv"</span> -H <span class="s2">"Authorization: xxxxxxxxxxx"</span>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://yyyyyyy.salesdirector.ai/api/v1/admin/opportunities/upload"</span> -F <span class="s2">"file=@myfile.csv"</span> -H <span class="s2">"Authorization: xxxxxxxxxxx"</span>
 </code></pre>
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
@@ -332,7 +334,7 @@ Opportunity ID*, Opportunity Name*, Amount, Close Date, Stage, Opportunity Owner
 
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">GET https://yyyyyyy.salesdirector.ai/api/admin/opportunities/upload</code></p>
+<p><code class="prettyprint">GET https://yyyyyyy.salesdirector.ai/api/v1/admin/opportunities/upload</code></p>
 
 <h3 id="query-parameters">Query Parameters</h3>
 
@@ -353,7 +355,7 @@ Opportunity ID*, Opportunity Name*, Amount, Close Date, Stage, Opportunity Owner
 <h1 id="sales-targets">Sales Targets</h1>
 
 <h2 id="upload-update-sales-targets">Upload/Update Sales Targets</h2>
-<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://yyyyyyy.salesdirector.ai/api/admin/salestargets/upload"</span> -F <span class="s2">"file=@myfile.csv"</span> -H <span class="s2">"Authorization: xxxxxxxxxxx"</span>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://yyyyyyy.salesdirector.ai/api/v1/admin/salestargets/upload"</span> -F <span class="s2">"file=@myfile.csv"</span> -H <span class="s2">"Authorization: xxxxxxxxxxx"</span>
 </code></pre>
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
@@ -379,7 +381,7 @@ Email Address of Salesrep, Month (date), Amount</p>
 
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">GET https://yyyyyyy.salesdirector.ai/api/admin/salestargets/upload</code></p>
+<p><code class="prettyprint">GET https://yyyyyyy.salesdirector.ai/api/v1/admin/salestargets/upload</code></p>
 
 <h3 id="query-parameters">Query Parameters</h3>
 
@@ -411,7 +413,7 @@ Email Address of Salesrep, Month (date), Amount</p>
 </tr>
 <tr>
 <td>401</td>
-<td>Unauthorized &ndash; Your API key is wrong</td>
+<td>Unauthorized &ndash; Your API key is invalid</td>
 </tr>
 <tr>
 <td>404</td>
