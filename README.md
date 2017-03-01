@@ -4,6 +4,7 @@
 # run locally
 bundle install
 bundle exec middleman server
+access the page at: http://127.0.0.1:4567
 
 # then to deploy to github pages
 ./deploy.sh

@@ -14,6 +14,7 @@ search: true
 #declare global vars here
 product_name = 'SalesDirector.ai'
 domain = 'salesdirector.ai'
+api_domain = '/api/v1'
 
 %>
 
@@ -21,9 +22,11 @@ domain = 'salesdirector.ai'
 
 <h3>Welcome to the <%= product_name %> API Documentation</h3> 
 
-This API speaks JSON.   The API uses <a href="https://labs.omniti.com/labs/jsend" target="_blank">JSend</a> type JSON responses to provide a consistent response format.
+This RESTful API speaks JSON.   The API uses <a href="https://labs.omniti.com/labs/jsend" target="_blank">JSend</a> type JSON responses to provide a consistent response format.
 
 This API is stable, we will be actively adding more methods to this API regularly.
+
+Any breaking changes made to the API will result in a new version of the API.   Currently we are on version 1.   You change the version in the URI such as /api/v1 or /api/v2, etc...
 
 # Authentication
 
@@ -49,7 +52,7 @@ You must replace <code>xxxxxxxxxxx</code> with your personal API key.
 
 Also Note you should access your API via your subdomain.  
 
-`https://yyyyyyy.<%= domain %>/api/something`
+`https://yyyyyyy.<%= domain %><%= api_domain %>/something`
 
 <aside class="notice">
 You must replace <code>yyyyyyy</code> with your subdomain.
@@ -62,7 +65,7 @@ You must replace <code>yyyyyyy</code> with your subdomain.
 ## Get My Opportunities
 
 ```shell
-curl "https://yyyyyyy.<%= domain %>/api/opportunities/my"
+curl "https://yyyyyyy.<%= domain %><%= api_domain %>/opportunities/my"
   -H "Authorization: xxxxxxxxxxx"
 ```
 
@@ -98,7 +101,7 @@ curl "https://yyyyyyy.<%= domain %>/api/opportunities/my"
 
 ### HTTP Request
 
-`GET https://yyyyyyy.<%= domain %>/api/opportunities/my`
+`GET https://yyyyyyy.<%= domain %><%= api_domain %>/opportunities/my`
 
 
 
@@ -107,7 +110,7 @@ curl "https://yyyyyyy.<%= domain %>/api/opportunities/my"
 ## Upload/Update Opportunities
 
 ```shell
-curl "https://yyyyyyy.<%= domain %>/api/admin/opportunities/upload" -F "file=@myfile.csv" -H "Authorization: xxxxxxxxxxx"
+curl "https://yyyyyyy.<%= domain %><%= api_domain %>/admin/opportunities/upload" -F "file=@myfile.csv" -H "Authorization: xxxxxxxxxxx"
 ```
 
 > The above command returns JSON structured like this:
@@ -138,7 +141,7 @@ The CSV file needs the first line to be a header line.  Only 2 fields marked wit
 
 ### HTTP Request
 
-`GET https://yyyyyyy.<%= domain %>/api/admin/opportunities/upload`
+`GET https://yyyyyyy.<%= domain %><%= api_domain %>/admin/opportunities/upload`
 
 ### Query Parameters
 
@@ -156,7 +159,7 @@ send_error_email | false | If set to true, any errors will be emailed to the use
 ## Upload/Update Sales Targets
 
 ```shell
-curl "https://yyyyyyy.<%= domain %>/api/admin/salestargets/upload" -F "file=@myfile.csv" -H "Authorization: xxxxxxxxxxx"
+curl "https://yyyyyyy.<%= domain %><%= api_domain %>/admin/salestargets/upload" -F "file=@myfile.csv" -H "Authorization: xxxxxxxxxxx"
 ```
 
 > The above command returns JSON structured like this:
@@ -184,7 +187,7 @@ The CSV file needs the first line to be a header line.  All fields are required.
 
 ### HTTP Request
 
-`GET https://yyyyyyy.<%= domain %>/api/admin/salestargets/upload`
+`GET https://yyyyyyy.<%= domain %><%= api_domain %>/admin/salestargets/upload`
 
 ### Query Parameters
 
