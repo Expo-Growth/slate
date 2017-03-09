@@ -139,6 +139,8 @@ The CSV file needs the first line to be a header line.  Only 2 fields marked wit
  
 <a href="https://app.<%= domain %>/static/build/sd_sample_opportunities.csv">Sample CSV File</a>
 
+Note: 20MB File Max
+
 ### HTTP Request
 
 `GET https://yyyyyyy.<%= domain %><%= api_domain %>/admin/opportunities/upload`
@@ -149,6 +151,51 @@ Parameter | Default | Description
 --------- | ------- | -----------
 send_error_email | false | If set to true, any errors will be emailed to the user
 
+
+
+# Contacts
+
+
+## Upload/Update Contacts
+
+```shell
+curl "https://yyyyyyy.<%= domain %><%= api_domain %>/admin/contacts/upload" -F "file=@myfile.csv" -H "Authorization: xxxxxxxxxxx"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "status":"success",
+  "data":{
+    "total_imported_rows": 12,
+    "total_error_rows": 2,
+    "error_file": "https://app.<%= domain %>/somebucket/mycompany-csv-contacts-error-2017-02-28-13-42-36-84q1jp3u.csv",
+    "total_original_rows": 12
+  }
+}
+```
+
+Upload / Update Contacts via CSV file (batch process).   These should be contacts associated with the Opportunities.  
+
+Note: you must have Administrative permissions to perform this action.
+
+Fields we need are: 
+Opportunity ID, Email*, Fullname, First Name, Last Name, Title, Company Name
+
+The CSV file needs the first line to be a header line.  The Opportunity ID is YOUR External Opportunity ID that you referenced in your Opportunity Upload.   
+ 
+<a href="https://app.<%= domain %>/static/build/sd_sample_contacts.csv">Sample CSV File</a>
+
+### HTTP Request
+
+`GET https://yyyyyyy.<%= domain %><%= api_domain %>/admin/contacts/upload`
+
+### Query Parameters
+
+Parameter | Default | Description
+--------- | ------- | -----------
+send_error_email | false | If set to true, any errors will be emailed to the user
 
 
 
@@ -170,7 +217,7 @@ curl "https://yyyyyyy.<%= domain %><%= api_domain %>/admin/salestargets/upload" 
   "data":{
     "total_imported_rows": 12,
     "total_error_rows": 2,
-    "error_file": "https://app.<%= domain %>/somebucket/mycompany-csv-opps-error-2017-02-28-13-42-36-84q1jp3u.csv",
+    "error_file": "https://app.<%= domain %>/somebucket/mycompany-csv-forecast-error-2017-02-28-13-42-36-84q1jp3u.csv",
     "total_original_rows": 12
   }
 }
