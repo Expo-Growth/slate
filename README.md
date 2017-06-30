@@ -8,6 +8,12 @@ access the page at: http://127.0.0.1:4567
 
 # then to deploy to github pages
 ./deploy.sh
+
+# then go here:
+https://github.com/Expo-Growth/slate/settings
+
+and update custom domain to: developer.salesdirector.ai
+
 ```
 
 

@@ -93,7 +93,9 @@ curl "https://yyyyyyy.<%= domain %><%= api_domain %>/opportunities/my"
       "stage_system": "Develop",
       "forecast_system": "upside",
       "activity_index": 33,
-      "relationship_index": 50
+      "relationship_index": 50,
+      "type": "New Business",
+      "website": "http://www.southernrailway.com"
     }
   ]
 }
@@ -130,10 +132,9 @@ curl "https://yyyyyyy.<%= domain %><%= api_domain %>/admin/opportunities/upload"
 Upload / Update Opportunities via CSV file (batch process).   Note: you must have Administrative permissions to perform this action.
 
 Note: The <u>unique key is the Opportunity ID</u>.   If we detect a new Opportunity ID in your CSV we will create a new opportunity, existing Opportunities will be Updated.  
-Additionally it is important to get the URL/Website field right.  We use this to match outgoing/inbound emails to the Opportunity.
 
-Fields we need are: 
-Opportunity ID*, Opportunity Name*, Amount, Close Date, Stage, Opportunity Owner, Opportunity Owner Email, Account ID, Account Name, Account URL/Website
+Supported Fields:
+Opportunity ID*, Opportunity Name*, Amount, Close Date, Stage, Opportunity Owner, Opportunity Owner Email, Account ID, Account Name, Account URL/Website, Opportunity Type, Next Step
 
 The CSV file needs the first line to be a header line.  Only 2 fields marked with a * are required, but we recommend as many as possible.  
  
@@ -180,8 +181,8 @@ Upload / Update Contacts via CSV file (batch process).   These should be contact
 
 Note: you must have Administrative permissions to perform this action.
 
-Fields we need are: 
-Opportunity ID, Email*, Fullname, First Name, Last Name, Title, Company Name
+Supported Fields: 
+Opportunity ID, Email*, Fullname, First Name, Last Name, Title, Company Name, Phone, Mobile Phone
 
 The CSV file needs the first line to be a header line.  The Opportunity ID is YOUR External Opportunity ID that you referenced in your Opportunity Upload.   
  
