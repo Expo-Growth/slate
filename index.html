@@ -295,7 +295,9 @@ You must replace <code>yyyyyyy</code> with your subdomain.
       </span><span class="s2">"stage_system"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Develop"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"forecast_system"</span><span class="p">:</span><span class="w"> </span><span class="s2">"upside"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"activity_index"</span><span class="p">:</span><span class="w"> </span><span class="mi">33</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"relationship_index"</span><span class="p">:</span><span class="w"> </span><span class="mi">50</span><span class="w">
+      </span><span class="s2">"relationship_index"</span><span class="p">:</span><span class="w"> </span><span class="mi">50</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"New Business"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"website"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://www.southernrailway.com"</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -322,11 +324,10 @@ You must replace <code>yyyyyyy</code> with your subdomain.
 </span></code></pre>
 <p>Upload / Update Opportunities via CSV file (batch process).   Note: you must have Administrative permissions to perform this action.</p>
 
-<p>Note: The <u>unique key is the Opportunity ID</u>.   If we detect a new Opportunity ID in your CSV we will create a new opportunity, existing Opportunities will be Updated.<br>
-Additionally it is important to get the URL/Website field right.  We use this to match outgoing/inbound emails to the Opportunity.</p>
+<p>Note: The <u>unique key is the Opportunity ID</u>.   If we detect a new Opportunity ID in your CSV we will create a new opportunity, existing Opportunities will be Updated.  </p>
 
-<p>Fields we need are: 
-Opportunity ID*, Opportunity Name*, Amount, Close Date, Stage, Opportunity Owner, Opportunity Owner Email, Account ID, Account Name, Account URL/Website</p>
+<p>Supported Fields:
+Opportunity ID*, Opportunity Name*, Amount, Close Date, Stage, Opportunity Owner, Opportunity Owner Email, Account ID, Account Name, Account URL/Website, Opportunity Type, Next Step</p>
 
 <p>The CSV file needs the first line to be a header line.  Only 2 fields marked with a * are required, but we recommend as many as possible.  </p>
 
@@ -376,8 +377,8 @@ Opportunity ID*, Opportunity Name*, Amount, Close Date, Stage, Opportunity Owner
 
 <p>Note: you must have Administrative permissions to perform this action.</p>
 
-<p>Fields we need are: 
-Opportunity ID, Email*, Fullname, First Name, Last Name, Title, Company Name</p>
+<p>Supported Fields: 
+Opportunity ID, Email*, Fullname, First Name, Last Name, Title, Company Name, Phone, Mobile Phone</p>
 
 <p>The CSV file needs the first line to be a header line.  The Opportunity ID is YOUR External Opportunity ID that you referenced in your Opportunity Upload.   </p>
 
